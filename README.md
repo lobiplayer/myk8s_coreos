@@ -35,7 +35,7 @@ With this project, I tried to
 
 | Purpose | Tool | Note |
 |---|---|---|
-| Kubernetes | <img src="https://k3s.io/img/k3s-logo-light.svg" width="100"><br>/>K3s |  |
+| Kubernetes | <img src="https://k3s.io/img/k3s-logo-light.svg" width="100"><br>K3s |  |
 | Networking | <img src="https://containous.github.io/slides/online-meetup-201901/images/traefik.logo.png" width="100"><br />Traefik | Default on K3s |
 | GIT | <img src="https://docs.gitea.io/images/gitea.png" width="100"><br />Gitea |  |
 | Repository Management | <img src="https://www.sonatype.com/hubfs/Repo%20Combined%20Manager/Repo%20Icon%20with%20green.png" width="100"><br />Nexus |  |
