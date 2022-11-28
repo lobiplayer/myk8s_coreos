@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team1-dev
+  labels:
+    name: team1-dev
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team1-tst
+  labels:
+    name: team1-tst
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team1-acc
+  labels:
+    name: team1-acc
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team1-prd
+  labels:
+    name: team1-prd

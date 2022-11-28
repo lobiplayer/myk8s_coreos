@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: clone-read-run-
+spec:
+  pipelineRef:
+    name: clone-read
+  podTemplate:
+    securityContext:
+      fsGroup: 65532
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  - name: git-credentials
+    secret:
+      secretName: gitea-ssh-key
+  params:
+  - name: repo-url
+    value: git@gitea-ssh.gitea.svc.cluster.local:robin/go_hello.git
