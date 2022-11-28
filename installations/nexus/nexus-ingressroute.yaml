@@ -14,7 +14,7 @@ items:
       match: Host(`nexus.example.com`)
       services:
       - name: nexus-service
-        port: 32000
+        port: 8081
 kind: List
 metadata:
   resourceVersion: ""
