@@ -5,6 +5,8 @@ I have built an kubernetes cluster on bare-metal using K3s.
 
 ## Hardware
 
+<img src="images/hardware_setup.jpg">
+
 For the hardware setup, I followed the following guide: https://anthonynsimon.com/blog/kubernetes-cluster-raspberry-pi/
 
 
@@ -17,17 +19,23 @@ I used three used Chromeboxes as nodes. In order to use the chromeboxes for this
 - Fedora 36
 - 4GiB RAM
 - Intel inside Core i7 (4 cores)
+- 14GiB Storage
 
 2 Worker nodes: Asus ChromeBox N62
 - Fedora 36
 - 4GiB RAM
 - Intel inside Core i7 (4 cores)
+- 14GiB Storage
 
 ### Networking
 
 Tp-link TI-Sg1005P 5-Ort Gigabit Poe Switch
 
 Tp-Link AC750 Mini Picket Wifi-router
+
+### Storage
+
+Sandisk 128 USB 3.0
 
 ## Software
 
