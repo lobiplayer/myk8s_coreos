@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-11-29T18:00:14Z"
+  name: nexus-service
+  namespace: nexus
+  resourceVersion: "456253"
+  uid: 84aa9648-9281-434a-9df7-36c470b711d5
+spec:
+  clusterIP: 10.43.150.169
+  clusterIPs:
+  - 10.43.150.169
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: nexus-server
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
