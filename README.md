@@ -31,7 +31,7 @@ I used three used Chromeboxes as nodes. In order to use the chromeboxes for this
 
 Tp-link TI-Sg1005P 5-Ort Gigabit Poe Switch
 
-Tp-Link AC750 Mini Picket Wifi-router
+Tp-Link AC750 Mini Picket Wifi-router (installed OpenWRT firmware on it)
 
 ### Storage
 
@@ -54,5 +54,6 @@ Planned:
 - Secret Management: Hashicorp Vault
 - Identity Management: OpenIAM
 - Monitoring/Log management: ELK Stack
+
 
 
