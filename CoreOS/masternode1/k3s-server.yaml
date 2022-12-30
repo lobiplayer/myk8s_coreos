@@ -19,9 +19,9 @@ storage:
           # GitHub provides sha256 hashes, but Ignition accepts only sha512 hashes, so you must download and generate the hash yourself :(
           hash: sha512-3ba0e4f6d4413916e802359ef6192621ad1aa911a617c3125976048e693038a3fd13c9ee72630386c0c76612531592433da092e40dbb781e6727d0fd90c27348
       user:
-        name: root
+        name: core
       group:
-        name: root
+        name: core
 
     # K3S Token
     - path: /usr/local/etc/k3s/token
@@ -29,7 +29,7 @@ storage:
         source: data:text/plain;charset=utf-8;base64,YWQ4NDE1NTUtZGMyOS00YTZkLTk1NjQtN2E5NzQ0NGUwM2Ux
       mode: 0400
       user:
-        name: root
+        name: core
     
     # Network settings: Static IP
     - path: /etc/NetworkManager/system-connections/Wired\ connection\ 1.nmconnection
