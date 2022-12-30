@@ -38,3 +38,34 @@ storage:
         inline: |
           #!/bin/bash
           curl -sfL https://get.k3s.io | sh -
+
+        # Network settings: Static IP
+    - path: /etc/NetworkManager/system-connections/Wired\ connection\ 1.nmconnection
+      mode: 0600
+      contents:
+        inline: |
+          [connection]
+          id=Wired connection 1
+          uuid=edab9b91-fa4b-3224-8526-5066c64cd61e
+          type=ethernet
+          autoconnect-priority=-999
+          interface-name=enp1s0
+          timestamp=1672242132
+
+          [ethernet]
+
+          [ipv4]
+          address1=10.42.42.100/24,10.42.42.1
+          dns=8.8.8.8;
+          method=manual
+
+          [ipv6]
+          addr-gen-mode=stable-privacy
+          method=auto
+
+          [proxy]
+    # Set hostname
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: masternode1
