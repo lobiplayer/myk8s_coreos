@@ -31,13 +31,17 @@ I used three used Chromeboxes as nodes. In order to use the chromeboxes for this
 
 Tp-link TI-Sg1005P 5-Ort Gigabit Poe Switch
 
-Tp-Link AC750 Mini Picket Wifi-router (installed OpenWRT firmware on it)
+Tp-Link AC750 Mini Picket Wifi-router (installed OpenWRT firmware on it https://www.youtube.com/watch?v=LIM_2BLi91M&t=315s)
 
 ### Storage
 
 Sandisk 128 USB 3.0
 
 ## Software
+
+# CoreOS
+
+
 
 With this project, I tried to 
 
