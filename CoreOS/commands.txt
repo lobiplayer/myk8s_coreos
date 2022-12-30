@@ -9,3 +9,5 @@ podman run -i --rm quay.io/coreos/fcct:release --pretty --strict < k3s-server.ya
 
 To embed ignition file into ISO:
 podman run --privileged --pull=always --rm -v .:/data -w /data quay.io/coreos/coreos-installer:release iso ignition embed -i coreos-autoinstall.ign ./fedora-coreos-32.20201004.3.0-live.x86_64.iso
+
+sudo coreos-installer install /dev/sda --ignition-url https://example.com/example.ign
