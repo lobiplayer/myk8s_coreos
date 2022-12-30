@@ -1,0 +1,37 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "passwordHash": "$y$j9T$ESI.95m/DiovKyPsYz/0r.$OEmQuEn4lQf7SZxEbccz/MaYZJkec4eKFWhXYivblj1",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2qCYXhOtEf7ZcI+gsasDOAA++IaoDnLfVUzt0h9ScZQqpaCJJ5/0yGM2WfX5NFUSPDvC5JIZ9JOjSMM94XW/ajLskxVYROwT/9g2R7H7crUHiRNVGXnse0/5fjt4plhkedvcsFDZCdCQi9mTgzgwPAN5HUJhd2eMrjZ3RByftcK6wORwoVgkJkO3THxzRgMWLiPsMDUrVzUwonZKH9Zk3Ei0JvQMsitF7kM8vGuvPH8yeNEN5JzHVrE3ZQZA1KT/whXHEbhTogtqn5MGEsmriqC5ejCvHQh6jKdkm02LwDff7E8hdtIBJtYowKtVHWapR783gvzGxFrYX66CFBBi7Om0Vn/RZWxzK4PJv4jU4ykBh1wTghtcUJMJMZ6k0eXKfVq0yR7Nk8uU2X7qdRKsXIio7IYwohS/qJmn5GmXyzXKt7zdnuh7Vo4pWo6+dxizlR8VXsQgrYFG5b9uNSPDhWT2laTGMvC8J6ZxL/LGnxPFpnDtauW1M5PDVYkC6uTs= rmohan@fedora"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/usr/local/bin/run-k3s-installer",
+        "contents": {
+          "compression": "",
+          "source": "data:;base64,IyEvYmluL2Jhc2gKY3VybCAtc2ZMIGh0dHBzOi8vZ2V0Lmszcy5pbyB8IHNoIC0="
+        },
+        "mode": 493
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "run-k3s-installer.service"
+      }
+    ]
+  }
+}
