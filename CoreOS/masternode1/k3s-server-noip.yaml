@@ -37,13 +37,12 @@ storage:
       contents:
         inline: |
           #!/bin/bash
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
           nmcli con mod Wired\ connection\ 1 ipv4.addresses 10.42.42.100/24
           nmcli con mod Wired\ connection\ 1 ipv4.gateway 10.42.42.1
           nmcli con mod Wired\ connection\ 1 ipv4.dns “8.8.8.8”
           nmcli con mod Wired\ connection\ 1 ipv4.method manual
           nmcli con up Wired\ connection\ 1
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
-
 
     # Set hostname
     - path: /etc/hostname
