@@ -18,8 +18,8 @@
       {
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
-          "compression": "",
-          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20INSTALL_K3S_EXEC%3D%22--disable%3Dtraefik%22%20sh%20-%0A"
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3zLO07DQBDG8d6nGEK9DycuEFIKhFIgLJpQ0EVj7yS7yr7kWYOQKHIQuJxPgkApXFnfV/7+tzeqc1F1yLaKofcO+hQhJAMUc80aXH5vJBozEDMx1Fo267/XWqt1s9CcsNAHfs6KBWwiw3T5vpP/my4/CzZQsclAwDiin7kxX1nVj4MHwccWbCmZ75U6UZHnDUuX4AueXvavD217eN7sD7u33eN2JYRxjJ2nbRmQju68ArYgqt8AAAD//23vX0MeAQAA"
         },
         "mode": 493
       },

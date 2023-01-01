@@ -37,6 +37,11 @@ storage:
       contents:
         inline: |
           #!/bin/bash
+          nmcli con mod enp1s0 ipv4.addresses 10.42.42.100/24
+          nmcli con mod enp1s0 ipv4.gateway 10.42.42.1
+          nmcli con mod enp1s0 ipv4.dns “8.8.8.8”
+          nmcli con mod enp1s0 ipv4.method manual
+          nmcli con up enp1s0
           curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
 
 
