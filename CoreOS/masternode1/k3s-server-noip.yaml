@@ -10,23 +10,6 @@ passwd:
 
 systemd:
   units:
-  - name: run-network-config.service
-    enabled: true
-    contents: |
-      [Unit]
-      After=network-online.target
-      Wants=network-online.target
-      Before=systemd-user-sessions.service
-      OnFailure=emergency.target
-      OnFailureJobMode=replace-irreversibly
-      [Service]
-      RemainAfterExit=yes
-      Type=oneshot
-      ExecStart=/usr/local/bin/network-config
-      StandardOutput=kmsg+console
-      StandardError=kmsg+console
-      [Install]
-      WantedBy=multi-user.target
   - name: run-k3s-installer.service
     enabled: true
     contents: |
@@ -48,17 +31,6 @@ systemd:
       WantedBy=multi-user.target
 storage:
   files:
-    - path: /usr/local/bin/network-config
-      mode: 0755
-      contents:
-        inline: |
-          #!/bin/bash
-          nmcli con mod Wired\ connection\ 1 ipv4.addresses 10.42.42.100/24
-          nmcli con mod Wired\ connection\ 1 ipv4.gateway 10.42.42.1
-          nmcli con mod Wired\ connection\ 1 ipv4.dns “8.8.8.8”
-          nmcli con mod Wired\ connection\ 1 ipv4.method manual
-          nmcli con up Wired\ connection\ 1
-
     - path: /usr/local/bin/run-k3s-installer
       mode: 0755
       contents:
