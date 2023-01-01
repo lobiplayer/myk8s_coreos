@@ -19,7 +19,7 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/3zLO07DQBDG8d6nGEK9DycuEFIKhFIgLJpQ0EVj7yS7yr7kWYOQKHIQuJxPgkApXFnfV/7+tzeqc1F1yLaKofcO+hQhJAMUc80aXH5vJBozEDMx1Fo267/XWqt1s9CcsNAHfs6KBWwiw3T5vpP/my4/CzZQsclAwDiin7kxX1nVj4MHwccWbCmZ75U6UZHnDUuX4AueXvavD217eN7sD7u33eN2JYRxjJ2nbRmQju68ArYgqt8AAAD//23vX0MeAQAA"
+          "source": "data:;base64,H4sIAAAAAAAC/4zMPU7DQBAF4N6nGELtXTtxgZBSIJQCYdEECYpI0dg7yY6yP9bOGoREkYPA5XISFKoUKaz3mld87/ZGdxx0h2KL4HvH0McAPhp440Rmc56B+swxbKAGHj4ahcYkEiGBulLN/Ny6qvS8mfywx0yf+HXhJ1MTBE7Hnzv1n9Pxd7L0lG004DGM6C7UOFxFRT8mB6XsWrA5D3Kv9Z6yOixEcYRveHpZvz607fZ5sd6u3lePy1lZGhbsHC1zQtrxYQZioSz+AgAA//+miGDDZAEAAA=="
         },
         "mode": 493
       },
