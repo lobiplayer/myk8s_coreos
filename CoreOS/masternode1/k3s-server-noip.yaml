@@ -37,7 +37,7 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" INSTALL_K3S_VERSION="v1.26.0" sh -
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
 
 
     # Set hostname
