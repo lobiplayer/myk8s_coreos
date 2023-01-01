@@ -8,47 +8,9 @@ passwd:
       ssh_authorized_keys:
         - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2qCYXhOtEf7ZcI+gsasDOAA++IaoDnLfVUzt0h9ScZQqpaCJJ5/0yGM2WfX5NFUSPDvC5JIZ9JOjSMM94XW/ajLskxVYROwT/9g2R7H7crUHiRNVGXnse0/5fjt4plhkedvcsFDZCdCQi9mTgzgwPAN5HUJhd2eMrjZ3RByftcK6wORwoVgkJkO3THxzRgMWLiPsMDUrVzUwonZKH9Zk3Ei0JvQMsitF7kM8vGuvPH8yeNEN5JzHVrE3ZQZA1KT/whXHEbhTogtqn5MGEsmriqC5ejCvHQh6jKdkm02LwDff7E8hdtIBJtYowKtVHWapR783gvzGxFrYX66CFBBi7Om0Vn/RZWxzK4PJv4jU4ykBh1wTghtcUJMJMZ6k0eXKfVq0yR7Nk8uU2X7qdRKsXIio7IYwohS/qJmn5GmXyzXKt7zdnuh7Vo4pWo6+dxizlR8VXsQgrYFG5b9uNSPDhWT2laTGMvC8J6ZxL/LGnxPFpnDtauW1M5PDVYkC6uTs= rmohan@fedora"
 
-storage:
-  files:
-
-    # K3S
-    - path: "/usr/local/bin/k3s"
-      contents:
-        source: https://github.com/k3s-io/k3s/releases/download/v1.26.0%2Bk3s1/k3s
-        verification:
-          # GitHub provides sha256 hashes, but Ignition accepts only sha512 hashes, so you must download and generate the hash yourself :(
-          hash: sha512-3ba0e4f6d4413916e802359ef6192621ad1aa911a617c3125976048e693038a3fd13c9ee72630386c0c76612531592433da092e40dbb781e6727d0fd90c27348
-      mode: 0755
-      user:
-        name: root
-      group:
-        name: root
-
-    # K3S Token
-    - path: /usr/local/etc/k3s/token
-      contents:
-        source: data:text/plain;charset=utf-8;base64,YWQ4NDE1NTUtZGMyOS00YTZkLTk1NjQtN2E5NzQ0NGUwM2Ux
-      mode: 0400
-      user:
-        name: root
-  
-
 systemd:
   units:
-  - name: settimezone.service
-    enabled: true
-    contents: |
-      [Unit]
-      Description=Set local time zone
-
-      [Install]
-      WantedBy=multi-user.target
-
-      [Service]
-      Type=oneshot
-      RemainAfterExit=yes
-      ExecStart=/usr/bin/timedatectl set-timezone Europe/Amsterdam
-  - name: run-k3s-prereq-installer.service
+  - name: run-k3s-installer.service
     enabled: true
     contents: |
       [Unit]
@@ -57,33 +19,53 @@ systemd:
       Before=systemd-user-sessions.service
       OnFailure=emergency.target
       OnFailureJobMode=replace-irreversibly
-      ConditionPathExists=!/var/lib/k3s-prereq-installed
-  - name: k3s.service
-    enabled: true
-    contents: |
-      [Unit]
-      Description=Lightweight Kubernetes
-      Documentation=https://k3s.io
-      Wants=network-online.target
-      After=network-online.target
-      After=settimezone.service
-
+      ConditionPathExists=!/var/lib/k3s-installed
+      [Service]
+      RemainAfterExit=yes
+      Type=oneshot
+      ExecStart=/usr/local/bin/run-k3s-installer
+      ExecStartPost=/usr/bin/touch /var/lib/k3s-installed
+      StandardOutput=kmsg+console
+      StandardError=kmsg+console
       [Install]
       WantedBy=multi-user.target
+storage:
+  files:
+   
+    - path: /usr/local/bin/run-k3s-installer
+      mode: 0755
+      contents:
+        inline: |
+          #!/bin/bash
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" INSTALL_K3S_VERSION="v1.26.0" sh -
 
-      [Service]
-      Type=notify
-      KillMode=process
-      Delegate=yes
-      LimitNOFILE=1048576
-      LimitNPROC=infinity
-      LimitCORE=infinity
-      TasksMax=infinity
-      TimeoutStartSec=0
-      Restart=always
-      RestartSec=5s
-      ExecStartPre=-/sbin/modprobe br_netfilter
-      ExecStartPre=-/sbin/modprobe overlay
-      ExecStart=/usr/local/bin/k3s \
-        'server' \
-        '--token-file=/usr/local/etc/k3s/token' \
+        # Network settings: Static IP
+    - path: /etc/NetworkManager/system-connections/Wired\ connection\ 1.nmconnection
+      mode: 0600
+      contents:
+        inline: |
+          [connection]
+          id=Wired connection 1
+          uuid=edab9b91-fa4b-3224-8526-5066c64cd61e
+          type=ethernet
+          autoconnect-priority=-999
+          interface-name=enp1s0
+          timestamp=1672242132
+
+          [ethernet]
+
+          [ipv4]
+          address1=10.42.42.100/24,10.42.42.1
+          dns=8.8.8.8;
+          method=manual
+
+          [ipv6]
+          addr-gen-mode=stable-privacy
+          method=auto
+
+          [proxy]
+    # Set hostname
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: masternode1

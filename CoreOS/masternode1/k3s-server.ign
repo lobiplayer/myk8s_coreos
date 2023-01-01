@@ -19,9 +19,25 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "",
-          "source": "data:;base64,IyEvYmluL2Jhc2gKY3VybCAtc2ZMIGh0dHBzOi8vZ2V0Lmszcy5pbyB8IHNoIC0="
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20INSTALL_K3S_EXEC%3D%22--disable%3Dtraefik%22%20INSTALL_K3S_VERSION%3D%22v1.26.0%22%20sh%20-%0A"
         },
         "mode": 493
+      },
+      {
+        "path": "/etc/NetworkManager/system-connections/Wired\\ connection\\ 1.nmconnection",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/0TPUW7DIAwG4HefogcYXaCUNZo4xx6iPDjgrkjFIHCq5fZT11WV/WJL/uR/CoWZgqTCM6Tov1KjuHstdxrWNUVPEZdxGbU6o13UwRirTkfj1HFwLjgbotMEslXyJBdqTAK4SvmHVG2ptCSbV+M4QmKhdsZAijGTJ666DyApUxfM1Wv3YYw1+mAApqc3A0yp3uwMGGOj3rXXw96ae+theDf27TVD5O5P+7/6hExyKdFn5BWvD8Y9GPVNrHKJ5LvgcqX7ozcM2/PkngFgqq38bDP8BgAA//8d0aZALQEAAA=="
+        },
+        "mode": 384
+      },
+      {
+        "path": "/etc/hostname",
+        "contents": {
+          "compression": "",
+          "source": "data:,masternode1"
+        },
+        "mode": 420
       }
     ]
   },
