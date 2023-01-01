@@ -43,6 +43,7 @@ storage:
           nmcli con mod Wired\ connection\ 1 ipv4.dns “8.8.8.8”
           nmcli con mod Wired\ connection\ 1 ipv4.method manual
           nmcli con up Wired\ connection\ 1
+          systemctl restart k3s.service
 
     # Set hostname
     - path: /etc/hostname
