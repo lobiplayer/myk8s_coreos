@@ -37,7 +37,7 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" INSTALL_K3S_VERSION="v1.26.0" sh -
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
 
         # Network settings: Static IP
     - path: /etc/NetworkManager/system-connections/Wired\ connection\ 1.nmconnection
