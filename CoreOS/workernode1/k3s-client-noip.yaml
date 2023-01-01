@@ -36,10 +36,10 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" K3S_URL=https://10.42.42.100:6443 K3S_TOKEN=K1025389f21baa8faa743deaf39e3f5702d86093e03c4023670d516cfbf52994b6e::server:cd3c0179816991eda71ddd69b2942791 sh -
+          curl -sfL https://get.k3s.io | K3S_URL=https://10.42.42.100:6443 K3S_TOKEN=K1025389f21baa8faa743deaf39e3f5702d86093e03c4023670d516cfbf52994b6e::server:cd3c0179816991eda71ddd69b2942791 sh -
 
     # Set hostname
     - path: /etc/hostname
       mode: 0644
       contents:
-        inline: masternode1
+        inline: workernode1
