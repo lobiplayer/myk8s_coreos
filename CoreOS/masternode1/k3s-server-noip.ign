@@ -16,10 +16,18 @@
   "storage": {
     "files": [
       {
-        "path": "/usr/local/bin/run-k3s-installer",
+        "path": "/usr/local/bin/network-config",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/4zQPWrDQBAF4F6nmDi1tJKtIgRchOAiRKRxICkMZrU7tgbvj9gZORhS+CDJ5XySoFQuXIiZ5hXfK979nWopqFZzl5khOch510An0vOjUnuU4rDggiJ8w8vb+v2pabavi/V29bl6Xs7y3BLr1uFSksYdHWbAHeRZ8MYRmBjARwsflNBuxhjQCMWwgQqoP9aFtjYhMzJUZVHPx6/KUs3ryQ17LfilT1d+MrWB4XL+eSj+73L+nSw9ShcteB0G7a7U0N9EGZ9Y0BtxkJBFJ4FxU8Z0JIPZXwAAAP//t8+82YIBAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/1JW1E/KzNNPSizO4MrLTc7JVEjOz1PIzU9RCM8sSk2JAXHzUpNLMvPzYhQMFTILykz0ElNSilKLi1OLFQwN9EyMQMjQwEDfyIRoE9ITS1LLEyuR9BOtNSWvWOFRwxwLPTB81DCXaJ25qSUZ+SkKuYl5pYk5SLpKC7Bq4gIEAAD//8spxWwbAQAA"
+        },
+        "mode": 493
+      },
+      {
+        "path": "/usr/local/bin/run-k3s-installer",
+        "contents": {
+          "compression": "",
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20INSTALL_K3S_EXEC%3D%22--disable%3Dtraefik%22%20sh%20-%0A"
         },
         "mode": 493
       },
@@ -35,6 +43,11 @@
   },
   "systemd": {
     "units": [
+      {
+        "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/network-config\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "run-network-config.service"
+      },
       {
         "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
         "enabled": true,

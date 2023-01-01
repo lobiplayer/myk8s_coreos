@@ -10,7 +10,7 @@ passwd:
 
 systemd:
   units:
-  - name: run-k3s-installer.service
+  - name: run-network-config.service
     enabled: true
     contents: |
       [Unit]
@@ -27,9 +27,9 @@ systemd:
       StandardError=kmsg+console
       [Install]
       WantedBy=multi-user.target
-    - name: run-k3s-installer.service
-      enabled: true
-      contents: |
+  - name: run-k3s-installer.service
+    enabled: true
+    contents: |
       [Unit]
       After=network-online.target
       Wants=network-online.target
