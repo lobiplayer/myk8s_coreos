@@ -37,6 +37,11 @@ Tp-Link AC750 Mini Picket Wifi-router (installed OpenWRT firmware on it https://
 
 Sandisk 128 USB 3.0
 
+## Open WRT
+
+
+![image](https://user-images.githubusercontent.com/76623233/215530647-0131e1ef-66ef-4b28-a12c-84fa5ced75d8.png)
+
 ## Software
 
 # CoreOS
