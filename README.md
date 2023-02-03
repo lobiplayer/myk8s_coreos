@@ -39,8 +39,27 @@ Sandisk 128 USB 3.0
 
 ## Open WRT
 
+1. Set router in client mode
 
-![image](https://user-images.githubusercontent.com/76623233/215530647-0131e1ef-66ef-4b28-a12c-84fa5ced75d8.png)
+2. Make connection to your home WiFi Network
+Network > Wireless
+
+![image](https://user-images.githubusercontent.com/76623233/216714058-1477dff3-a184-4ed3-af95-8222eca1e4ca.png)
+
+3. Add an extra IPv4 address the LAN interface:
+![image](https://user-images.githubusercontent.com/76623233/216714245-8e012c88-c600-4f2f-85f9-25f3d4ec8647.png)
+
+Now your two interfaces should look like this:
+![image](https://user-images.githubusercontent.com/76623233/216714319-d549879d-d965-4bf4-ae72-06fe02bfefdc.png)
+
+4. Make sure that the Firewall allows traffic to all zones:
+Network > Firewall
+![image](https://user-images.githubusercontent.com/76623233/216714466-07a6a27c-c58b-41a9-8039-7041e925c56b.png)
+
+5. Enable port forwarding for the k8s api endpoint and ssh
+
+![image](https://user-images.githubusercontent.com/76623233/216714671-8b5f5ef3-d176-4439-93bb-f1b555867475.png)
+
 
 ## Software
 
