@@ -1,0 +1,61 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "passwordHash": "$y$j9T$ESI.95m/DiovKyPsYz/0r.$OEmQuEn4lQf7SZxEbccz/MaYZJkec4eKFWhXYivblj1",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2qCYXhOtEf7ZcI+gsasDOAA++IaoDnLfVUzt0h9ScZQqpaCJJ5/0yGM2WfX5NFUSPDvC5JIZ9JOjSMM94XW/ajLskxVYROwT/9g2R7H7crUHiRNVGXnse0/5fjt4plhkedvcsFDZCdCQi9mTgzgwPAN5HUJhd2eMrjZ3RByftcK6wORwoVgkJkO3THxzRgMWLiPsMDUrVzUwonZKH9Zk3Ei0JvQMsitF7kM8vGuvPH8yeNEN5JzHVrE3ZQZA1KT/whXHEbhTogtqn5MGEsmriqC5ejCvHQh6jKdkm02LwDff7E8hdtIBJtYowKtVHWapR783gvzGxFrYX66CFBBi7Om0Vn/RZWxzK4PJv4jU4ykBh1wTghtcUJMJMZ6k0eXKfVq0yR7Nk8uU2X7qdRKsXIio7IYwohS/qJmn5GmXyzXKt7zdnuh7Vo4pWo6+dxizlR8VXsQgrYFG5b9uNSPDhWT2laTGMvC8J6ZxL/LGnxPFpnDtauW1M5PDVYkC6uTs= rmohan@fedora"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/usr/local/bin/run-k3s-installer",
+        "contents": {
+          "compression": "",
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20INSTALL_K3S_EXEC%20sh%20-%0A"
+        },
+        "mode": 493
+      },
+      {
+        "path": "/etc/hostname",
+        "contents": {
+          "compression": "",
+          "source": "data:,masternode1"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/0SOQWrEMAxF9zrFHKCe2kMoDUXn6MJ4YSJNY4hlYyuluX1J0xCkjfT/f3w/FRGeNBUJkAg/U2O6Xc+bA90qI+vMTVghrlr+ZVNbKi3phmYcR0ii3J5xYiMxM7JU1y2AP6MBwKf6PQSIRI17d+jsfXjs66x9fQwv1w0kHd/vf/MBmXUuhDnKGpcD83ZgzBeLyYUYiZ9xXfT07j0BfG3lZwvwGwAA///vqGeZ5wAAAA=="
+        },
+        "mode": 384
+      },
+      {
+        "path": "/etc/rancher/k3s/k3s.yaml",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,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"
+        },
+        "mode": 384
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "run-k3s-installer.service"
+      }
+    ]
+  }
+}
