@@ -16,4 +16,4 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/masternode1/k3s-server.ign
+          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/masternode1/k3s-server.ign --image-file /var/fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz
