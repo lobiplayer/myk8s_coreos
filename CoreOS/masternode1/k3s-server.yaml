@@ -34,6 +34,8 @@ systemd:
     enabled: true
     contents: |
       [Unit]
+      After=run-k3s-installer.service
+      Before=run-argocdhelminstall.service
       Description=Layer helm as with rpm-ostree
       # We run after `systemd-machine-id-commit.service` to ensure that
       # `ConditionFirstBoot=true` services won't rerun on the next boot.
@@ -51,8 +53,8 @@ systemd:
     enabled: true
     contents: |
       [Unit]
-      After=network-online.target
-      Wants=network-online.target
+      After=layer-helm.service
+      Wants=layer-helm.service
       Before=systemd-user-sessions.service
       OnFailure=emergency.target
       OnFailureJobMode=replace-irreversibly
