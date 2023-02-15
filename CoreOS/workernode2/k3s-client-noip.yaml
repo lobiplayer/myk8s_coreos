@@ -43,3 +43,26 @@ storage:
       mode: 0644
       contents:
         inline: workernode2
+    
+    - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
+      mode: 0600
+      contents:
+        inline: |
+          [connection]
+          id=Wired connection 1
+          type=ethernet
+          autoconnect-priority=-999
+          interface-name=enp1s0
+
+          [ethernet]
+
+          [ipv4]
+          address1=10.42.42.102/24,10.42.42.1
+          dns=8.8.8.8;
+          method=manual
+
+          [ipv6]
+          addr-gen-mode=default
+          method=auto
+
+          [proxy]
