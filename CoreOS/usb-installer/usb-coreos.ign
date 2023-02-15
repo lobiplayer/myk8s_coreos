@@ -22,22 +22,6 @@
           "source": "data:,%23!%2Fbin%2Fbash%0Asudo%20coreos-installer%20install%20%2Fdev%2Fsda%20--ignition-url%20https%3A%2F%2Fraw.githubusercontent.com%2Flobiplayer%2Fmy_k3s_cluster%2Fmain%2FCoreOS%2Fmasternode1%2Fk3s-server.ign%20--image-file%20%2Fvar%2Ffedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz%0A"
         },
         "mode": 493
-      },
-      {
-        "path": "/var/workernode1-install.sh",
-        "contents": {
-          "compression": "",
-          "source": "data:,%23!%2Fbin%2Fbash%0Asudo%20coreos-installer%20install%20%2Fdev%2Fsda%20--ignition-url%20https%3A%2F%2Fraw.githubusercontent.com%2Flobiplayer%2Fmy_k3s_cluster%2Fmain%2FCoreOS%2Fworkernode1%2Fk3s-server.ign%20--image-file%20%2Fvar%2Ffedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz%0A"
-        },
-        "mode": 493
-      },
-      {
-        "path": "/var/workernode2-install.sh",
-        "contents": {
-          "compression": "",
-          "source": "data:,%23!%2Fbin%2Fbash%0Asudo%20coreos-installer%20install%20%2Fdev%2Fsda%20--ignition-url%20https%3A%2F%2Fraw.githubusercontent.com%2Flobiplayer%2Fmy_k3s_cluster%2Fmain%2FCoreOS%2Fworkernode2%2Fk3s-server.ign%20--image-file%20%2Fvar%2Ffedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz"
-        },
-        "mode": 493
       }
     ]
   }
