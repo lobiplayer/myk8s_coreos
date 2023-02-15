@@ -36,13 +36,13 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | K3S_URL=https://10.42.42.100:6443 K3S_TOKEN=K1025389f21baa8faa743deaf39e3f5702d86093e03c4023670d516cfbf52994b6e::server:cd3c0179816991eda71ddd69b2942791 sh -
+          curl -sfL https://get.k3s.io | K3S_URL=https://10.42.42.100:6443 K3S_TOKEN=K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687 sh -
 
     # Set hostname
     - path: /etc/hostname
       mode: 0644
       contents:
-        inline: workernode1
+        inline: workernode2
     
     - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
       mode: 0600
@@ -57,7 +57,7 @@ storage:
           [ethernet]
 
           [ipv4]
-          address1=10.42.42.101/24,10.42.42.1
+          address1=10.42.42.102/24,10.42.42.1
           dns=8.8.8.8;
           method=manual
 
