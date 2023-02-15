@@ -29,23 +29,6 @@ systemd:
       StandardError=kmsg+console
       [Install]
       WantedBy=multi-user.target
-  
-  - name: layer-helm.service
-    enabled: true
-    contents: |
-      [Unit]
-      Description=Layer helm as with rpm-ostree
-      # We run after `systemd-machine-id-commit.service` to ensure that
-      # `ConditionFirstBoot=true` services won't rerun on the next boot.
-      After=systemd-machine-id-commit.service
-
-      [Service]
-      Type=oneshot
-      RemainAfterExit=yes
-      ExecStart=/usr/bin/rpm-ostree install helm --reboot
-
-      [Install]
-      WantedBy=multi-user.target
 
 
 storage:
@@ -57,13 +40,7 @@ storage:
           #!/bin/bash
           curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -
     
-    - path: /usr/local/bin/argocdhelminstall
-      mode: 0755
-      contents:
-        inline: |
-          #!/bin/bash
-          kubectl create namespace argocd
-          helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.21.0 -f /var/application.yaml
+    
 
     # Set hostname
     - path: /etc/hostname
@@ -118,24 +95,3 @@ storage:
               client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJrVENDQVRlZ0F3SUJBZ0lJZmNGTEllS0ZNUEF3Q2dZSUtvWkl6ajBFQXdJd0l6RWhNQjhHQTFVRUF3d1kKYXpOekxXTnNhV1Z1ZEMxallVQXhOamN5TlRreE5UY3pNQjRYRFRJek1ERXdNVEUyTkRZeE0xb1hEVEkwTURFdwpNVEUyTkRZeE0xb3dNREVYTUJVR0ExVUVDaE1PYzNsemRHVnRPbTFoYzNSbGNuTXhGVEFUQmdOVkJBTVRESE41CmMzUmxiVHBoWkcxcGJqQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJHaFU3T0dzTHByNWFETHYKLzJOTUlBSlZjT0tvMTk0UWRhY3RkRjNZNytwdU14NExJcXVudWtEeTBXK2ptL2h6cDgrZ3RvcEZLK2xERlVNMgpyUW5SRE42alNEQkdNQTRHQTFVZER3RUIvd1FFQXdJRm9EQVRCZ05WSFNVRUREQUtCZ2dyQmdFRkJRY0RBakFmCkJnTlZIU01FR0RBV2dCUUROcmptdDMrWlVVMTZ0UE9FZGVmZ2crNFV4REFLQmdncWhrak9QUVFEQWdOSUFEQkYKQWlFQWk2b1VLMTNrTmh0UlZDSjdBQThjZWJjbWx4WlVDYldmVkhOeDJ5VWwrUGtDSUNBTUJqUzRHcU13bE50WgpVRFdFb0dXNE9hQ2NUSWhuUjJmc2R4MTdMazFCCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJlRENDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdFkyeHAKWlc1MExXTmhRREUyTnpJMU9URTFOek13SGhjTk1qTXdNVEF4TVRZME5qRXpXaGNOTXpJeE1qSTVNVFkwTmpFegpXakFqTVNFd0h3WURWUVFEREJock0zTXRZMnhwWlc1MExXTmhRREUyTnpJMU9URTFOek13V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSTnRuQWhUSGdBTXJ0L1F4TXlPQ21CNEJOUDMyRWFuazVNbEpXcEZRb2cKQnhqeUc0OFlCSnUxaExwMFdjeGIxM0RZd2FreVNhdzRNV1NxZXoxb2tudnpvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVUF6YTQ1cmQvbVZGTmVyVHpoSFhuCjRJUHVGTVF3Q2dZSUtvWkl6ajBFQXdJRFNRQXdSZ0loQUpTNy9VOUphWjF6TnE0cXF2WGpndnRESk9UUURhb1IKcng2VVN6YUF3bWJ3QWlFQXRGT1B0d3MwbkNBeXQ2bGx1b1h2OTZJaDNVa2o1dWhuTTRIUnZBUGtlL2c9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
               client-key-data: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUI2clFucEZLVnRxK3JSdWVtaWJ2YUpEY1UxNW1TdEJtZ1d6dkcwaHJHWjdvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFYUZUczRhd3VtdmxvTXUvL1kwd2dBbFZ3NHFqWDNoQjFweTEwWGRqdjZtNHpIZ3NpcTZlNgpRUExSYjZPYitIT256NkMyaWtVcjZVTVZRemF0Q2RFTTNnPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
     
-    - path: /var/application.yaml
-      mode: 0600
-      contents:
-        inline: |
-          server:
-            additionalApplications:
-            - name: cluster-config
-              namespace: argocd
-              project: default
-              source:
-                repoURL: https://github.com/lobiplayer/myk8s_argocd.git
-                targetRevision: HEAD
-                path: cluster
-                directory:
-                  recurse: true
-              destination:
-                server: https://kubernetes.default.svc
-              syncPolicy:
-                automated:
-                  prune: false
-                  selfHeal: false
