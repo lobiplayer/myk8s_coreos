@@ -19,7 +19,7 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "",
-          "source": "data:;base64,IyEvYmluL2Jhc2gKY3VybCAtc2ZMIGh0dHBzOi8vZ2V0Lmszcy5pbyB8IEszU19LVUJFQ09ORklHX01PREU9IjY0NCIgSU5TVEFMTF9LM1NfRVhFQz0ic2VydmVyIiBzaCAtCg=="
+          "source": "data:;base64,IyEvYmluL2Jhc2gKY3VybCAtc2ZMIGh0dHBzOi8vZ2V0Lmszcy5pbyB8IHNoIC0K"
         },
         "mode": 493
       },
