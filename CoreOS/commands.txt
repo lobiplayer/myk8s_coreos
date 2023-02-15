@@ -11,3 +11,5 @@ To embed ignition file into ISO:
 podman run --privileged --pull=always --rm -v .:/data -w /data quay.io/coreos/coreos-installer:release iso ignition embed -i k3s-server.ign ./fedora-coreos-37.20221211.3.0-live.x86_64.iso
 
 sudo coreos-installer install /dev/sdb --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/masternode1/k3s-server.ign --copy-network
+
+sudo coreos-installer install /dev/sda --ignition-file ./usb-coreos-wipea.ign --image-file ./fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz

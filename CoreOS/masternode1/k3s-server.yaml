@@ -34,8 +34,6 @@ systemd:
     enabled: true
     contents: |
       [Unit]
-      After=run-k3s-installer.service
-      Before=run-argocdhelminstall.service
       Description=Layer helm as with rpm-ostree
       # We run after `systemd-machine-id-commit.service` to ensure that
       # `ConditionFirstBoot=true` services won't rerun on the next boot.
@@ -48,26 +46,7 @@ systemd:
 
       [Install]
       WantedBy=multi-user.target
-  
-  - name: run-argocdhelminstall.service
-    enabled: true
-    contents: |
-      [Unit]
-      After=layer-helm.service
-      Wants=layer-helm.service
-      Before=systemd-user-sessions.service
-      OnFailure=emergency.target
-      OnFailureJobMode=replace-irreversibly
-      ConditionPathExists=!/var/lib/argocdhelm-installed
-      [Service]
-      RemainAfterExit=yes
-      Type=oneshot
-      ExecStart=/usr/local/bin/argocdhelminstall
-      ExecStartPost=/usr/bin/touch /var/lib/argocdhelm-installed
-      StandardOutput=kmsg+console
-      StandardError=kmsg+console
-      [Install]
-      WantedBy=multi-user.target
+
 
 storage:
   files:
