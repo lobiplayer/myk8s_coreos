@@ -40,6 +40,32 @@
           }
         ],
         "wipeTable": true
+      },
+      {
+        "device": "/dev/sdb",
+        "partitions": [
+          {
+            "number": 1,
+            "shouldExist": false,
+            "wipePartitionEntry": true
+          },
+          {
+            "number": 2,
+            "shouldExist": false,
+            "wipePartitionEntry": true
+          },
+          {
+            "number": 3,
+            "shouldExist": false,
+            "wipePartitionEntry": true
+          },
+          {
+            "number": 4,
+            "shouldExist": false,
+            "wipePartitionEntry": true
+          }
+        ],
+        "wipeTable": true
       }
     ],
     "files": [

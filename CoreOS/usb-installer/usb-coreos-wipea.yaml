@@ -25,6 +25,21 @@ storage:
       - number: 4
         should_exist: false
         wipe_partition_entry: true
+    - device: /dev/sdb
+      wipe_table: true
+      partitions:
+      - number: 1
+        should_exist: false
+        wipe_partition_entry: true
+      - number: 2
+        should_exist: false
+        wipe_partition_entry: true
+      - number: 3
+        should_exist: false
+        wipe_partition_entry: true
+      - number: 4
+        should_exist: false
+        wipe_partition_entry: true
   
   files:
     - path: /root/masternode-install.sh
