@@ -30,21 +30,21 @@ systemd:
       [Install]
       WantedBy=multi-user.target
   
-  - name: layer-helm.service
+  - name: rpm-ostree-install.service
     enabled: true
     contents: |
       [Unit]
-      After=run-k3s-installer.service
-      Before=run-argocdhelminstall.service
-      Description=Layer helm as with rpm-ostree
-      # We run after `systemd-machine-id-commit.service` to ensure that
-      # `ConditionFirstBoot=true` services won't rerun on the next boot.
-
+      Description=Layer additional rpms
+      Wants=network-online.target
+      After=network-online.target
+      # We run before `zincati.service` to avoid conflicting rpm-ostree transactions.
+      Before=zincati.service
+      ConditionPathExists=!/var/lib/%N.stamp
       [Service]
       Type=oneshot
       RemainAfterExit=yes
-      ExecStart=/usr/bin/rpm-ostree install helm --reboot
-
+      ExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive $RPMS
+      ExecStart=/bin/touch /var/lib/%N.stamp
       [Install]
       WantedBy=multi-user.target
   
@@ -76,6 +76,13 @@ storage:
           #!/bin/bash
           curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687 --agent-token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687" sh -
     
+    - path: /etc/systemd/system/rpm-ostree-install.service.d/rpms.conf
+      mode: 0644
+      contents:
+        inline: |
+          [Service]
+          Environment=RPMS="helm"
+
     - path: /usr/local/bin/argocdhelminstall
       mode: 0755
       contents:
