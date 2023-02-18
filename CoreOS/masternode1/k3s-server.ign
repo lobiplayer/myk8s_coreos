@@ -40,14 +40,6 @@
         "mode": 420
       },
       {
-        "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
-        "contents": {
-          "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0SOQWrEMAxF9zrFHKCe2kMoDUXn6MJ4YSJNY4hlYyuluX1J0xCkjfT/f3w/FRGeNBUJkAg/U2O6Xc+bA90qI+vMTVghrlr+ZVNbKi3phmYcR0ii3J5xYiMxM7JU1y2AP6MBwKf6PQSIRI17d+jsfXjs66x9fQwv1w0kHd/vf/MBmXUuhDnKGpcD83ZgzBeLyYUYiZ9xXfT07j0BfG3lZwvwGwAA///vqGeZ5wAAAA=="
-        },
-        "mode": 384
-      },
-      {
         "path": "/etc/rancher/k3s/k3s.yaml",
         "contents": {
           "compression": "gzip",
