@@ -90,28 +90,28 @@ storage:
       contents:
         inline: masternode1
     
-    - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
-      mode: 0600
-      contents:
-        inline: |
-          [connection]
-          id=Wired connection 1
-          type=ethernet
-          autoconnect-priority=-999
-          interface-name=enp1s0
+    # - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
+    #   mode: 0600
+    #   contents:
+    #     inline: |
+    #       [connection]
+    #       id=Wired connection 1
+    #       type=ethernet
+    #       autoconnect-priority=-999
+    #       interface-name=enp1s0
 
-          [ethernet]
+    #       [ethernet]
 
-          [ipv4]
-          address1=10.42.42.100/24,10.42.42.1
-          dns=8.8.8.8;
-          method=manual
+    #       [ipv4]
+    #       address1=10.42.42.100/24,10.42.42.1
+    #       dns=8.8.8.8;
+    #       method=manual
 
-          [ipv6]
-          addr-gen-mode=default
-          method=auto
+    #       [ipv6]
+    #       addr-gen-mode=default
+    #       method=auto
 
-          [proxy]
+    #       [proxy]
     
     - path: /etc/rancher/k3s/k3s.yaml
       mode: 0600
