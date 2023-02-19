@@ -35,15 +35,14 @@ systemd:
     contents: |
       [Unit]
       Description=Layer additional rpms
-      Wants=network-online.target
-      After=network-online.target
+      After=run-k3s-installer.service
       # We run before `zincati.service` to avoid conflicting rpm-ostree transactions.
       Before=zincati.service
       ConditionPathExists=!/var/lib/%N.stamp
       [Service]
       Type=oneshot
       RemainAfterExit=yes
-      ExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive $RPMS
+      ExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive helm
       ExecStart=/bin/touch /var/lib/%N.stamp
       [Install]
       WantedBy=multi-user.target
