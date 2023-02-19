@@ -10,25 +10,25 @@ passwd:
 
 systemd:
   units:
-  # - name: run-k3s-installer.service
-  #   enabled: true
-  #   contents: |
-  #     [Unit]
-  #     After=network-online.target
-  #     Wants=network-online.target
-  #     Before=systemd-user-sessions.service
-  #     OnFailure=emergency.target
-  #     OnFailureJobMode=replace-irreversibly
-  #     ConditionPathExists=!/var/lib/k3s-installed
-  #     [Service]
-  #     RemainAfterExit=yes
-  #     Type=oneshot
-  #     ExecStart=/usr/local/bin/run-k3s-installer
-  #     ExecStartPost=/usr/bin/touch /var/lib/k3s-installed
-  #     StandardOutput=kmsg+console
-  #     StandardError=kmsg+console
-  #     [Install]
-  #     WantedBy=multi-user.target
+  - name: run-k3s-installer.service
+    enabled: true
+    contents: |
+      [Unit]
+      After=network-online.target
+      Wants=network-online.target
+      Before=systemd-user-sessions.service
+      OnFailure=emergency.target
+      OnFailureJobMode=replace-irreversibly
+      ConditionPathExists=!/var/lib/k3s-installed
+      [Service]
+      RemainAfterExit=yes
+      Type=oneshot
+      ExecStart=/usr/local/bin/run-k3s-installer
+      ExecStartPost=/usr/bin/touch /var/lib/k3s-installed
+      StandardOutput=kmsg+console
+      StandardError=kmsg+console
+      [Install]
+      WantedBy=multi-user.target
   
   - name: run-helm-installer.service
     enabled: true
