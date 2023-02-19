@@ -24,12 +24,12 @@
         "mode": 493
       },
       {
-        "path": "/etc/systemd/system/rpm-ostree-install.service.d/rpms.conf",
+        "path": "/usr/local/bin/run-helm-installer",
         "contents": {
           "compression": "",
-          "source": "data:,%5BService%5D%0AEnvironment%3DRPMS%3D%22helm%22%0A"
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-fsSL%20-o%20get_helm.sh%20https%3A%2F%2Fraw.githubusercontent.com%2Fhelm%2Fhelm%2Fmain%2Fscripts%2Fget-helm-3%0Achmod%20700%20get_helm.sh%0A.%2Fget_helm.sh%0A"
         },
-        "mode": 420
+        "mode": 493
       },
       {
         "path": "/usr/local/bin/argocdhelminstall",
@@ -48,37 +48,26 @@
         "mode": 420
       },
       {
-        "path": "/etc/rancher/k3s/k3s.yaml",
-        "contents": {
-          "compression": "gzip",
-          "source": "data:;base64,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"
-        },
-        "mode": 384
-      },
-      {
         "path": "/var/application.yaml",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0SQMW7DMAxF95yCF4i9FtoCtECGDkWAzgVD0Y4aWRRIKoBvX8Sx3U16X9Ljl7E+WMMBAGNMnqRgPtWaE+FzY8/kCAUnDkC5mbMeScqQxgMALIFVJA6AOgrFhVaVXyYPEHnAln2BJk2Jw7IGUK7yffkMcHOvFvp+TH5r145k6rNcU804s/bTfH+zn9fT3Zh8ve2oI/uFH8mSlADnj9P7GlX02z7qymJSJhedN/vTT02NA7g2Xmhk81SW1tux9XP2Ge/tylrY2bq1WWcPerWbC31JTrQ7sLlM6Bz/pVVb4QADZuMdGufhzJg3/hcAAP//gQ6zqZIBAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/0SQMW7DMAxF95yCF4i9FtoCtECGDkWAzgVD0Y4aWRRIKoBvX9hx3E16X9Ljl7E+WMMBAGNMnqRgPtWaE+GysSU5QsGJA1Bu5qxHkjKk8QAAa2AViQOgjkJxpVXll8kDRB6wZV+hSVPisK4BlKt8Xz4D3Nyrhb4fk9/atSOZ+izXVDPOrP0039/s5/l0NybfbjvqyH7hR7IkJcD54/S+RRX9to+6sZiUyUXnl33xU1PjAK6NVxrZPJW19evY9jn7jPd2ZS3sbN3WrLMHPdvNhb4kJ9od2FwmdI7/0qqtcIABs/EOjfNwZswb/wsAAP//wKLKAJEBAAA="
         },
         "mode": 384
-      },
-      {
-        "overwrite": true,
-        "path": "/etc/profile.d/zz-default-editor.sh",
-        "contents": {
-          "compression": "",
-          "source": "data:,export%20EDITOR%3Dvim"
-        }
       }
     ]
   },
   "systemd": {
     "units": [
       {
-        "contents": "[Unit]\nDescription=Layer vim with rpm-ostree\nWants=network-online.target\nAfter=network-online.target\n# We run before `zincati.service` to avoid conflicting rpm-ostree\n# transactions.\nBefore=zincati.service\nConditionPathExists=!/var/lib/%N.stamp\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\n# `--allow-inactive` ensures that rpm-ostree does not return an error\n# if the package is already installed. This is useful if the package is\n# added to the root image in a future Fedora CoreOS release as it will\n# prevent the service from failing.\nExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive vim\nExecStart=/bin/touch /var/lib/%N.stamp\n\n[Install]\nWantedBy=multi-user.target\n",
+        "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
         "enabled": true,
-        "name": "rpm-ostree-install-vim.service"
+        "name": "run-k3s-installer.service"
+      },
+      {
+        "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/helm-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-helm-installer\nExecStartPost=/usr/bin/touch /var/lib/helm-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "run-helm-installer.service"
       }
     ]
   }
