@@ -102,7 +102,8 @@ storage:
           #!/bin/bash
           sudo kubectl create namespace argocd
           sudo helm repo add argo https://argoproj.github.io/argo-helm
-          sudo helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.22.0 -f /var/application.yaml --kubeconfig /etc/rancher/k3s/k3s.yaml
+          sudo helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.22.0 --kubeconfig /etc/rancher/k3s/k3s.yaml
+          sudo kubectl apply -f /var/root.yaml
 
     # Set hostname
     - path: /etc/hostname
@@ -135,26 +136,26 @@ storage:
           [proxy]
 
     # Configuration for ArgoCD
-    - path: /var/application.yaml
+    - path: /var/root.yaml
       mode: 0600
       contents:
         inline: |
-          server:
-            additionalApplications:
-            - name: cluster-config
-              namespace: argocd
-              project: default
-              source:
-                repoURL: https://github.com/lobiplayer/myk8s_argocd.git
-                targetRevision: HEAD
-                path: cluster
-                directory:
+          apiVersion: argoproj.io/v1alpha1
+          kind: Application
+          metadata:
+            name: root
+            namespace: argocd
+          spec:
+            project: default
+            source:
+              path: cluster/
+              repoURL: https://github.com/lobiplayer/myk8s_argocd.git
+              targetRevision: HEAD
+              directory:
                   recurse: true
-              destination:
-                server: https://kubernetes.default.svc
-              syncPolicy:
+            destination:
+              server: "https://kubernetes.default.svc"
+            syncPolicy:
                 automated:
                   prune: false
                   selfHeal: false
-            extraArgs: 
-            - "--insecure"
