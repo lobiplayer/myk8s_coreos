@@ -83,7 +83,7 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --no-deploy traefik --token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687 --agent-token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687" sh -
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik" K3S_TOKEN="K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687" K3S_AGENT_TOKEN="K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687" sh -
     
     # Bash script that installs Helm
     - path: /usr/local/bin/run-helm-installer
