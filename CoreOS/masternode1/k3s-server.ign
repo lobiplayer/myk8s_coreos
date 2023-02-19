@@ -71,16 +71,6 @@
         "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
         "enabled": true,
         "name": "run-k3s-installer.service"
-      },
-      {
-        "contents": "[Unit]\nDescription=Layer additional rpms\nAfter=run-k3s-installer.service\n# We run before `zincati.service` to avoid conflicting rpm-ostree transactions.\n[Service]\nType=oneshot\nRemainAfterExit=yes\nExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive helm\n[Install]\nWantedBy=multi-user.target\n",
-        "enabled": true,
-        "name": "rpm-ostree-install.service"
-      },
-      {
-        "contents": "[Unit]\nAfter=layer-helm.service\nWants=layer-helm.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/argocdhelm-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/argocdhelminstall\nExecStartPost=/usr/bin/touch /var/lib/argocdhelm-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
-        "enabled": true,
-        "name": "run-argocdhelminstall.service"
       }
     ]
   }

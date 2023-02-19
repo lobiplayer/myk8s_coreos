@@ -30,38 +30,38 @@ systemd:
       [Install]
       WantedBy=multi-user.target
   
-  - name: rpm-ostree-install.service
-    enabled: true
-    contents: |
-      [Unit]
-      Description=Layer additional rpms
-      After=run-k3s-installer.service
-      # We run before `zincati.service` to avoid conflicting rpm-ostree transactions.
-      [Service]
-      Type=oneshot
-      RemainAfterExit=yes
-      ExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive helm
-      [Install]
-      WantedBy=multi-user.target
+  # - name: rpm-ostree-install.service
+  #   enabled: true
+  #   contents: |
+  #     [Unit]
+  #     Description=Layer additional rpms
+  #     After=run-k3s-installer.service
+  #     # We run before `zincati.service` to avoid conflicting rpm-ostree transactions.
+  #     [Service]
+  #     Type=oneshot
+  #     RemainAfterExit=yes
+  #     ExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive helm
+  #     [Install]
+  #     WantedBy=multi-user.target
   
-  - name: run-argocdhelminstall.service
-    enabled: true
-    contents: |
-      [Unit]
-      After=layer-helm.service
-      Wants=layer-helm.service
-      OnFailure=emergency.target
-      OnFailureJobMode=replace-irreversibly
-      ConditionPathExists=!/var/lib/argocdhelm-installed
-      [Service]
-      RemainAfterExit=yes
-      Type=oneshot
-      ExecStart=/usr/local/bin/argocdhelminstall
-      ExecStartPost=/usr/bin/touch /var/lib/argocdhelm-installed
-      StandardOutput=kmsg+console
-      StandardError=kmsg+console
-      [Install]
-      WantedBy=multi-user.target
+  # - name: run-argocdhelminstall.service
+  #   enabled: true
+  #   contents: |
+  #     [Unit]
+  #     After=layer-helm.service
+  #     Wants=layer-helm.service
+  #     OnFailure=emergency.target
+  #     OnFailureJobMode=replace-irreversibly
+  #     ConditionPathExists=!/var/lib/argocdhelm-installed
+  #     [Service]
+  #     RemainAfterExit=yes
+  #     Type=oneshot
+  #     ExecStart=/usr/local/bin/argocdhelminstall
+  #     ExecStartPost=/usr/bin/touch /var/lib/argocdhelm-installed
+  #     StandardOutput=kmsg+console
+  #     StandardError=kmsg+console
+  #     [Install]
+  #     WantedBy=multi-user.target
 
 storage:
   files:
