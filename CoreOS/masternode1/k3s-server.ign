@@ -19,7 +19,7 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/8TNsU7DMBAA0L1fcZTZjR3HPjsSA0IdUCOWMrBV5/O5qYpSFBsmPp6Bj+gPvPf40KXL0iWq84a/109QtUwwt/ZVx647S9tdbd1dbvALr2/H9+dpOh3s8bT/2L88bausP7KCUu12lQUORlvvtbNC3uCALmnWIXHQKXghT1FjEDF9CX0kyYjFRT8QUjKZ04A+j+O/OVoeSCNzNNlhkT5Yo8XlENmZ4gOCUnSWpd2h3kKdQW3+AgAA//8AbSmEOgEAAA=="
+          "source": "data:;base64,H4sIAAAAAAAC/8TNMU7DMBQA0L2n+JTZjR3H/nYkBoQ6oEYsZWCrvu3vJkqVVLFBQuLwDByCE7zHhyZMSxOojLv4ud1AlDzAWOu99E1z5XqYdTlMK/zA69v5/XkYLid9vhw/ji9P+8LbF28gxLKKxPfb+g11I87TDELUdeYFTkpqa6XRTFZhhybIKF2ITgZnmSx5iY5Ztdm1njghZuNtR0hBpRg6tKnv/5xex44kxuhVMpi5dVpJNsn5aFS2DkEIuvJS/4HeQxlB7H4DAAD//zN1rrpOAQAA"
         },
         "mode": 493
       },
@@ -48,10 +48,18 @@
         "mode": 420
       },
       {
+        "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/0SOQWrEMAxF9zrFHKCe2kMoDUXn6MJ4YSJNY4hlYyuluX1J0xCkjfT/f3w/FRGeNBUJkAg/U2O6Xc+bA90qI+vMTVghrlr+ZVNbKi3phmYcR0ii3J5xYiMxM7JU1y2AP6MBwKf6PQSIRI17d+jsfXjs66x9fQwv1w0kHd/vf/MBmXUuhDnKGpcD83ZgzBeLyYUYiZ9xXfT07j0BfG3lZwvwGwAA///vqGeZ5wAAAA=="
+        },
+        "mode": 384
+      },
+      {
         "path": "/var/application.yaml",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0SQMW7DMAxF95yCF4i9FtoCtECGDkWAzgVD0Y4aWRRIKoBvX9hx3E16X9Ljl7E+WMMBAGNMnqRgPtWaE+GysSU5QsGJA1Bu5qxHkjKk8QAAa2AViQOgjkJxpVXll8kDRB6wZV+hSVPisK4BlKt8Xz4D3Nyrhb4fk9/atSOZ+izXVDPOrP0039/s5/l0NybfbjvqyH7hR7IkJcD54/S+RRX9to+6sZiUyUXnl33xU1PjAK6NVxrZPJW19evY9jn7jPd2ZS3sbN3WrLMHPdvNhb4kJ9od2FwmdI7/0qqtcIABs/EOjfNwZswb/wsAAP//wKLKAJEBAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/0SQsY7jMAxE+3wFkd52e1AX4A5IccUiwNYLRqIdbmRJIKlg/fcLK47TSW8kzgyV5EHiDgAYAhvnhPFUSmSP60VXpYOEMznwsaqRdD6nkacDADRBC3pygDJlHxotkr/Jm4NAI9ZoDWqu4sm1M4BQyZ+X/w5uZkXdMExst3rtfZ6HmK9cIi4kw7zc/+jXc3Q/sW2/DWUiu9CDlXNycP53+rtJBe22R91YYCFvWZaX++rvqyg5MKnUaCA1Tq3169m2nD3jvV5JEhlpvzXr9eGf7ZbkP3Jkv3tgtTyjUXibFqmJHIwYlXaoFMczYXxz+jHBk0zqoG3/2HWcdA1Mx98AAAD//2RdZRqwAQAA"
         },
         "mode": 384
       }

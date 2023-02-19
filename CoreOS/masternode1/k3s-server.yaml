@@ -10,6 +10,8 @@ passwd:
 
 systemd:
   units:
+
+  # Service that installs k3s
   - name: run-k3s-installer.service
     enabled: true
     contents: |
@@ -30,6 +32,7 @@ systemd:
       [Install]
       WantedBy=multi-user.target
   
+  # Service that installs Helm
   - name: run-helm-installer.service
     enabled: true
     contents: |
@@ -50,6 +53,7 @@ systemd:
       [Install]
       WantedBy=multi-user.target
 
+  # Service that installs Argocd through Helm
   - name: run-argocd-helminstall.service
     enabled: true
     contents: |
@@ -73,13 +77,15 @@ systemd:
 
 storage:
   files:
+    # Bash script that installs k3s server
     - path: /usr/local/bin/run-k3s-installer
       mode: 0755
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687 --agent-token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687" sh -
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --no-deploy traefik --token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687 --agent-token K10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d::server:3c4a07cc91d57fe28310e5d89c51f687" sh -
     
+    # Bash script that installs Helm
     - path: /usr/local/bin/run-helm-installer
       mode: 0755
       contents:
@@ -88,7 +94,7 @@ storage:
           cd /var
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
     
-
+    #  Bash script that installs Argocd through Helm
     - path: /usr/local/bin/argocd-helminstall
       mode: 0755
       contents:
@@ -104,29 +110,31 @@ storage:
       contents:
         inline: masternode1
     
-    # - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
-    #   mode: 0600
-    #   contents:
-    #     inline: |
-    #       [connection]
-    #       id=Wired connection 1
-    #       type=ethernet
-    #       autoconnect-priority=-999
-    #       interface-name=enp1s0
+    # Set network settings
+    - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
+      mode: 0600
+      contents:
+        inline: |
+          [connection]
+          id=Wired connection 1
+          type=ethernet
+          autoconnect-priority=-999
+          interface-name=enp1s0
 
-    #       [ethernet]
+          [ethernet]
 
-    #       [ipv4]
-    #       address1=10.42.42.100/24,10.42.42.1
-    #       dns=8.8.8.8;
-    #       method=manual
+          [ipv4]
+          address1=10.42.42.100/24,10.42.42.1
+          dns=8.8.8.8;
+          method=manual
 
-    #       [ipv6]
-    #       addr-gen-mode=default
-    #       method=auto
+          [ipv6]
+          addr-gen-mode=default
+          method=auto
 
-    #       [proxy]
-    
+          [proxy]
+
+    # Configuration for ArgoCD
     - path: /var/application.yaml
       mode: 0600
       contents:
@@ -148,3 +156,5 @@ storage:
                 automated:
                   prune: false
                   selfHeal: false
+            extraArgs: 
+            - "--insecure"
