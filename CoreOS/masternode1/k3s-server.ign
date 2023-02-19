@@ -32,10 +32,10 @@
         "mode": 493
       },
       {
-        "path": "/usr/local/bin/argocdhelminstall",
+        "path": "/usr/local/bin/argocd-helminstall",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/1yLzQrCMBAG73mKFc+bqOADfdmuNrj5IYmFvr0oeOlxZpjzKcRUQsRY3esdVaaRdMVUKsg6GkQJ/VllcataplTGhBnlnb+aZfnl8Afm40fMm/aRaqG7v139hfhBYUMPaM2SYKZa/I5s7hMAAP//hP4q744AAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/1yPwW4DMQhE7/kKqp4xVape+jesl6zd2MbCbKT8fbVeVapy4DDMPNC8v9GSGy080mXsq8J9XyR6gWjCLtC4yugcBdg2jesZSlIqmHQFXtfpQHLv45voEN30J2zZ076ErHOFB/IPzm04lwL1idOO5xn6E4ivnwHxITayNvgK12v4ALwBPdiIey85smdt4cm1AOJsoe2WNyDxSMYtJjG6f45jZuzyGwAA///xNwHo/AAAAA=="
         },
         "mode": 493
       },
@@ -68,6 +68,11 @@
         "contents": "[Unit]\nAfter=run-k3s-installer.service\nWants=run-k3s-installer.service\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/helm-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-helm-installer\nExecStartPost=/usr/bin/touch /var/lib/helm-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
         "enabled": true,
         "name": "run-helm-installer.service"
+      },
+      {
+        "contents": "[Unit]\nAfter=run-helm-installer.service\nWants=run-helm-installer.service\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/argocd-helminstall\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/argocd-helminstall\nExecStartPost=/usr/bin/touch /var/lib/argocd-helminstall\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "run-argocd-helminstall.service"
       }
     ]
   }

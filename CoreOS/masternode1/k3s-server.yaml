@@ -50,6 +50,26 @@ systemd:
       [Install]
       WantedBy=multi-user.target
 
+  - name: run-argocd-helminstall.service
+    enabled: true
+    contents: |
+      [Unit]
+      After=run-helm-installer.service
+      Wants=run-helm-installer.service
+      Before=systemd-user-sessions.service
+      OnFailure=emergency.target
+      OnFailureJobMode=replace-irreversibly
+      ConditionPathExists=!/var/lib/argocd-helminstall
+      [Service]
+      RemainAfterExit=yes
+      Type=oneshot
+      ExecStart=/usr/local/bin/argocd-helminstall
+      ExecStartPost=/usr/bin/touch /var/lib/argocd-helminstall
+      StandardOutput=kmsg+console
+      StandardError=kmsg+console
+      [Install]
+      WantedBy=multi-user.target
+
 
 storage:
   files:
@@ -69,13 +89,14 @@ storage:
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
     
 
-    - path: /usr/local/bin/argocdhelminstall
+    - path: /usr/local/bin/argocd-helminstall
       mode: 0755
       contents:
         inline: |
           #!/bin/bash
-          kubectl create namespace argocd
-          helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.21.0 -f /var/application.yaml
+          sudo kubectl create namespace argocd
+          sudo helm repo add argo https://argoproj.github.io/argo-helm
+          sudo helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.22.0 -f /var/application.yaml --kubeconfig /etc/rancher/k3s/k3s.yaml
 
     # Set hostname
     - path: /etc/hostname
