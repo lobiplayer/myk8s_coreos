@@ -59,9 +59,17 @@
         "path": "/var/application.yaml",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0SQMW7DMAxF95yCF4i9FtoCtECGDkWAzgVD0Y4aWRRIKoBvX9hx3E16X9Ljl7E+WMMBAGNMnqRgPtWaE+GysSU5QsGJA1Bu5qxHkjKk8QAAa2AViQOgjkJxpVXll8kDRB6wZV+hSVPisK4BlKt8Xz4D3Nyrhb4fk9/atSOZ+izXVDPOrP0039/s5/l0NybfbjvqyH7hR7IkJcD54/S+RRX9to+6sZiUyUXnl33xU1PjAK6NVxrZPJW19evY9jn7jPd2ZS3sbN3WrLMHPdvNhb4kJ9od2FwmdI7/0qqtcIABs/EOjfNwZswb/wsAAP//wKLKAJEBAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/0SQMW7DMAxF95yCF4i9FtoCtECGDkWAzgVD0Y4aWRRIKoBvX8Sx3U16X9Ljl7E+WMMBAGNMnqRgPtWaE+FzY8/kCAUnDkC5mbMeScqQxgMALIFVJA6AOgrFhVaVXyYPEHnAln2BJk2Jw7IGUK7yffkMcHOvFvp+TH5r145k6rNcU804s/bTfH+zn9fT3Zh8ve2oI/uFH8mSlADnj9P7GlX02z7qymJSJhedN/vTT02NA7g2Xmhk81SW1tux9XP2Ge/tylrY2bq1WWcPerWbC31JTrQ7sLlM6Bz/pVVb4QADZuMdGufhzJg3/hcAAP//gQ6zqZIBAAA="
         },
         "mode": 384
+      },
+      {
+        "overwrite": true,
+        "path": "/etc/profile.d/zz-default-editor.sh",
+        "contents": {
+          "compression": "",
+          "source": "data:,export%20EDITOR%3Dvim"
+        }
       }
     ]
   },
@@ -71,6 +79,11 @@
         "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
         "enabled": true,
         "name": "run-k3s-installer.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Layer vim with rpm-ostree\nWants=network-online.target\nAfter=network-online.target\n# We run before `zincati.service` to avoid conflicting rpm-ostree\n# transactions.\nBefore=zincati.service\nConditionPathExists=!/var/lib/%N.stamp\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\n# `--allow-inactive` ensures that rpm-ostree does not return an error\n# if the package is already installed. This is useful if the package is\n# added to the root image in a future Fedora CoreOS release as it will\n# prevent the service from failing.\nExecStart=/usr/bin/rpm-ostree install --apply-live --allow-inactive vim\nExecStart=/bin/touch /var/lib/%N.stamp\n\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "rpm-ostree-install-vim.service"
       }
     ]
   }
