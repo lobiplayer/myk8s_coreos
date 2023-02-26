@@ -19,7 +19,7 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "",
-          "source": "data:;base64,IyEvYmluL2Jhc2gKY3VybCAtc2ZMIGh0dHBzOi8vZ2V0Lmszcy5pbyB8IElOU1RBTExfSzNTX0VYRUM9InNlcnZlciAtLWRpc2FibGUgdHJhZWZpayIgc2ggLQo="
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20INSTALL_K3S_EXEC%3D%22server%20--disable%20traefik%20--resolv-conf%20%2Frun%2Fsystemd%2Fresolve%2Fresolv.conf%22%20sh%20-%0A"
         },
         "mode": 493
       },
