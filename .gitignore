@@ -5,3 +5,5 @@ node-token
 CoreOS/usb-installer/fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz.sig
 CoreOS/usb-installer/fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz
 fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz
+tokens
+ca.txt
