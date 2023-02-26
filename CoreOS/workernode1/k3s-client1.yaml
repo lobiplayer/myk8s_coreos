@@ -58,6 +58,7 @@ storage:
 
           [ipv4]
           address1=10.42.42.101/24,10.42.42.1
+          dns=10.42.42.1;
           method=manual
 
           [ipv6]
