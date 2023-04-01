@@ -11,10 +11,26 @@ passwd:
 storage:
   
   files:
-    - path: /var/masternode-install.sh
+    - path: /var/masternode1-install.sh
       mode: 0755
       contents:
         inline: |
           #!/bin/bash
+          sudo wipefs -a /dev/sda
           sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/masternode1/k3s-server.ign --image-file /var/fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz
 
+    - path: /var/workernode1-install.sh
+      mode: 0755
+      contents:
+        inline: |
+          #!/bin/bash
+          wipefs -a /dev/sda
+          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/workernode1/k3s-server.ign --image-file /var/fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz
+
+    - path: /var/workernode2-install.sh
+      mode: 0755
+      contents:
+        inline: |
+          #!/bin/bash
+          sudo wipefs -a /dev/sda
+          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/workernode2/k3s-server.ign --image-file /var/fedora-coreos-37.20230122.3.0-metal.x86_64.raw.xz
