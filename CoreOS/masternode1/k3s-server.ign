@@ -51,7 +51,7 @@
         "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0yOQWrEMAxF9zpFDlC3dgiFUHyOLowXJlIaQywbWymT2w8hEzKgjfT0H99NmZkmiZk9RLS/sRJ297EzIHshS7JQZRIIm+QXVqXGXKPsVo3jCJGF6hwmUhwSWeJimgZwV9QDuFj+Bw8BsVJrxhr9OfTHGK2/+uHj3gG5veEfSCRLRpsCb2E9Td+nSf0Rq5SRLNIctlWu36MqgCs1P3YPzwAAAP//QtGQI+oAAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/0yOUQrCMAyG33OKHcDqKkMY0nP4UPpQlswV1rS0mbjbi8wxIS/Jl//jt0NipkFCYgcBzSMUwuY4NhpkzWRIJipMAn6R9MMql5BKkNWovu8hsFAZ/UCKfSRDnHVtAewedQA25FfnwCMWqlUb3Z73aS/X7nTsgFz/8B0iyZTQRM+LnzfTbTOpJ7GKCckgjX6ZZf/9VgWwuaT36uATAAD//6JlEqrqAAAA"
         },
         "mode": 384
       },
