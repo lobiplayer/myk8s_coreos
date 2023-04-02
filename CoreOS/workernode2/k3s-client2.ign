@@ -1,0 +1,53 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "passwordHash": "$y$j9T$ESI.95m/DiovKyPsYz/0r.$OEmQuEn4lQf7SZxEbccz/MaYZJkec4eKFWhXYivblj1",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2qCYXhOtEf7ZcI+gsasDOAA++IaoDnLfVUzt0h9ScZQqpaCJJ5/0yGM2WfX5NFUSPDvC5JIZ9JOjSMM94XW/ajLskxVYROwT/9g2R7H7crUHiRNVGXnse0/5fjt4plhkedvcsFDZCdCQi9mTgzgwPAN5HUJhd2eMrjZ3RByftcK6wORwoVgkJkO3THxzRgMWLiPsMDUrVzUwonZKH9Zk3Ei0JvQMsitF7kM8vGuvPH8yeNEN5JzHVrE3ZQZA1KT/whXHEbhTogtqn5MGEsmriqC5ejCvHQh6jKdkm02LwDff7E8hdtIBJtYowKtVHWapR783gvzGxFrYX66CFBBi7Om0Vn/RZWxzK4PJv4jU4ykBh1wTghtcUJMJMZ6k0eXKfVq0yR7Nk8uU2X7qdRKsXIio7IYwohS/qJmn5GmXyzXKt7zdnuh7Vo4pWo6+dxizlR8VXsQgrYFG5b9uNSPDhWT2laTGMvC8J6ZxL/LGnxPFpnDtauW1M5PDVYkC6uTs= rmohan@fedora"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/usr/local/bin/run-k3s-installer",
+        "contents": {
+          "compression": "",
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20K3S_URL%3Dhttps%3A%2F%2F10.10.10.100%3A6443%20K3S_TOKEN%3DK10e4ae89d7eae317867587550de0d5c236670a2cffb3bcd4a403aca48daeb3b94e%3A%3Aserver%3A62255953bc98e6ab5a845a7e67b26757%20sh%20-%0A"
+        },
+        "mode": 493
+      },
+      {
+        "path": "/etc/hostname",
+        "contents": {
+          "compression": "",
+          "source": "data:,workernode2"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/0yO0aqDMAyG7/MUPsDpmRUZyOhz7KL0opg4CzYtbRzz7cdw4iA3yZf/47djYqZRQmIHAc09FMLmPDYaZMtkSGYqTAJ+lfTFKpeQSpDNqGEYILBQmfxIin0kQ5x1bQHsEXUANuRn78AjFqpVG93+H9Nduv7v3AG5/uAbRJI5oYmeV7/sputuUg9iFROSQZr8usjx+6kKYHNJr829AwAA//+HkD9y6QAAAA=="
+        },
+        "mode": 384
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nAfter=network-online.target\nWants=network-online.target\nBefore=systemd-user-sessions.service\nOnFailure=emergency.target\nOnFailureJobMode=replace-irreversibly\nConditionPathExists=!/var/lib/k3s-installed\n[Service]\nRemainAfterExit=yes\nType=oneshot\nExecStart=/usr/local/bin/run-k3s-installer\nExecStartPost=/usr/bin/touch /var/lib/k3s-installed\nStandardOutput=kmsg+console\nStandardError=kmsg+console\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "run-k3s-installer.service"
+      }
+    ]
+  }
+}
