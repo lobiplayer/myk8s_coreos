@@ -102,7 +102,7 @@ storage:
           #!/bin/bash
           sudo kubectl create namespace argocd
           sudo helm repo add argo https://argoproj.github.io/argo-helm
-          sudo helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.22.0 --kubeconfig /etc/rancher/k3s/k3s.yaml
+          sudo helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.27.5 --kubeconfig /etc/rancher/k3s/k3s.yaml
           sudo kubectl apply -f /var/root.yaml
 
     # Set hostname

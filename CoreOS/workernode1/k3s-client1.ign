@@ -19,7 +19,7 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "",
-          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20K3S_URL%3Dhttps%3A%2F%2F10.42.42.100%3A6443%20K3S_TOKEN%3DK10366053ea617475b0c08bc80b86ea6a9078ee12f829aed77f5964a7ab1dcb476d%3A%3Aserver%3A3c4a07cc91d57fe28310e5d89c51f687%20sh%20-%0A"
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20K3S_URL%3Dhttps%3A%2F%2F10.10.10.100%3A6443%20K3S_TOKEN%3DK10e4ae89d7eae317867587550de0d5c236670a2cffb3bcd4a403aca48daeb3b94e%3A%3Aserver%3A62255953bc98e6ab5a845a7e67b26757%20sh%20-%0A"
         },
         "mode": 493
       },
@@ -35,7 +35,7 @@
         "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0yOQYrDMAxF9zpFDjCeiUMYCMXn6MJ4YSKlMcSysZXS3L6ENKSgjfT0H9+OiZlGCYkdBDT3UAib69hokC2TIZmpMAn4VdIHq1xCKkE2o4ZhgMBCZfIjKfaRDHHWtQWwZ9QB2JCfvQOPWKhWbXT723f76Fb/df3PtQNy/cI3iCRzQhM9r345TP+HST2IVUxIBmny6yLn714VwOaSXpt7BwAA//8ZANqZ6QAAAA=="
+          "source": "data:;base64,H4sIAAAAAAAC/0yOUQrCMAyG33OKHcDqKkMY0nP4UPpQlswV1rS0mbjbi8wxIS/Jl//jt0NipkFCYgcBzSMUwuY4NhpkzWRIJipMAn6R9MMql5BKkNWovu8hsFAZ/UCKfSRDnHVtAewedQA25FfnwCMWqlUb3Z730Zdrdzp2QK5/+A6RZEpooufFz5vptpnUk1jFhGSQRr/Msv9+qwLYXNJ7dZ8AAAD//4AARcjpAAAA"
         },
         "mode": 384
       }
