@@ -36,7 +36,7 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | K3S_URL=https://10.10.10.100:6443 K3S_TOKEN=K10e4ae89d7eae317867587550de0d5c236670a2cffb3bcd4a403aca48daeb3b94e::server:62255953bc98e6ab5a845a7e67b26757 sh -
+          curl -sfL https://get.k3s.io | K3S_URL=https://10.10.10.100:6443 K3S_TOKEN=K10a71fb876ad3f485cb9e6281db056b0b851e8a0cee4241c788e29ebda81bf6743::server:a2bb138d99b1530dcdd4bf06cc9e66be sh -
 
     # Set hostname
     - path: /etc/hostname

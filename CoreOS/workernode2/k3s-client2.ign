@@ -19,7 +19,7 @@
         "path": "/usr/local/bin/run-k3s-installer",
         "contents": {
           "compression": "",
-          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20K3S_URL%3Dhttps%3A%2F%2F10.10.10.100%3A6443%20K3S_TOKEN%3DK10e4ae89d7eae317867587550de0d5c236670a2cffb3bcd4a403aca48daeb3b94e%3A%3Aserver%3A62255953bc98e6ab5a845a7e67b26757%20sh%20-%0A"
+          "source": "data:,%23!%2Fbin%2Fbash%0Acurl%20-sfL%20https%3A%2F%2Fget.k3s.io%20%7C%20K3S_URL%3Dhttps%3A%2F%2F10.10.10.100%3A6443%20K3S_TOKEN%3DK10a71fb876ad3f485cb9e6281db056b0b851e8a0cee4241c788e29ebda81bf6743%3A%3Aserver%3Aa2bb138d99b1530dcdd4bf06cc9e66be%20sh%20-%0A"
         },
         "mode": 493
       },
