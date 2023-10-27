@@ -1,7 +1,12 @@
-# my_k3s_cluster
+# Intro
+
+## What
+
 Configuration of my K3s cluster
 
 I have built an kubernetes cluster on bare-metal using K3s.
+
+## Why
 
 ## Hardware
 For the hardware setup, I followed the following guide: https://anthonynsimon.com/blog/kubernetes-cluster-raspberry-pi/
@@ -20,6 +25,11 @@ For the hardware setup, I followed the following guide: https://anthonynsimon.co
 - Intel inside Core i5
 - ? Storage
 
+1 Raspberry Pi 4 8GB
+- Fedora 38
+- 8GiB RAM
+- 
+
 ### Networking
 
 Tp-link TI-Sg1005P 5-Ort Gigabit Poe Switch
@@ -28,11 +38,32 @@ Tp-Link AC750 Mini Picket Wifi-router (installed OpenWRT firmware on it https://
 
 CABLES
 
+USB stick
+
+
 ### Storage
 
 Sandisk 128 USB 3.0
 
-## Open WRT
+# Installation Guide
+
+## OpenWRT on router
+
+### Install OpenWRT on router
+
+Check this link to learn how to do this:
+https://www.youtube.com/watch?v=LIM_2BLi91M&t=315s
+
+### Extend the storage of the router with an USB stick
+
+We want to install some packages on the router. This router has just a few mb of storage, therefore we want to put the root system on a usbstick.
+Follow this documentation to learh how:
+https://openwrt.org/docs/guide-user/additional-software/extroot_configuration
+
+### Install and configure loadbalancer
+
+
+
 
 1. Set router in client mode
 
