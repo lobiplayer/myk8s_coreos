@@ -56,6 +56,10 @@ https://www.youtube.com/watch?v=LIM_2BLi91M&t=315s
 
 ### Extend the storage of the router with an USB stick
 
+First, check if you need to install drivers for reading the usb-stick.
+SSH into the router and use the commands described here: https://openwrt.org/docs/guide-user/storage/usb-installing
+
+
 We want to install some packages on the router. This router has just a few mb of storage, therefore we want to put the root system on a usbstick.
 Follow this documentation to learh how:
 https://openwrt.org/docs/guide-user/additional-software/extroot_configuration
