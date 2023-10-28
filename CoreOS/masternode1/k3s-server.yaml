@@ -31,48 +31,6 @@ systemd:
       StandardError=kmsg+console
       [Install]
       WantedBy=multi-user.target
-  
-  # Service that installs Helm
-  - name: run-helm-installer.service
-    enabled: true
-    contents: |
-      [Unit]
-      After=run-k3s-installer.service
-      Wants=run-k3s-installer.service
-      Before=systemd-user-sessions.service
-      OnFailure=emergency.target
-      OnFailureJobMode=replace-irreversibly
-      ConditionPathExists=!/var/lib/helm-installed
-      [Service]
-      RemainAfterExit=yes
-      Type=oneshot
-      ExecStart=/usr/local/bin/run-helm-installer
-      ExecStartPost=/usr/bin/touch /var/lib/helm-installed
-      StandardOutput=kmsg+console
-      StandardError=kmsg+console
-      [Install]
-      WantedBy=multi-user.target
-
-  # Service that installs Argocd through Helm
-  - name: run-argocd-helminstall.service
-    enabled: true
-    contents: |
-      [Unit]
-      After=run-helm-installer.service
-      Wants=run-helm-installer.service
-      Before=systemd-user-sessions.service
-      OnFailure=emergency.target
-      OnFailureJobMode=replace-irreversibly
-      ConditionPathExists=!/var/lib/argocd-helminstall
-      [Service]
-      RemainAfterExit=yes
-      Type=oneshot
-      ExecStart=/usr/local/bin/argocd-helminstall
-      ExecStartPost=/usr/bin/touch /var/lib/argocd-helminstall
-      StandardOutput=kmsg+console
-      StandardError=kmsg+console
-      [Install]
-      WantedBy=multi-user.target
 
 storage:
   files:
@@ -83,15 +41,6 @@ storage:
         inline: |
           #!/bin/bash
           curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik" sh -
-    
-    # Bash script that installs Helm
-    - path: /usr/local/bin/run-helm-installer
-      mode: 0755
-      contents:
-        inline: |
-          #!/bin/bash
-          cd /var
-          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
     # Set hostname
     - path: /etc/hostname
