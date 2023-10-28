@@ -74,7 +74,6 @@ systemd:
       [Install]
       WantedBy=multi-user.target
 
-
 storage:
   files:
     # Bash script that installs k3s server
@@ -83,7 +82,7 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --flannel-backend=host-gw" sh -
+          curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik" sh -
     
     # Bash script that installs Helm
     - path: /usr/local/bin/run-helm-installer
@@ -93,17 +92,6 @@ storage:
           #!/bin/bash
           cd /var
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-    
-    #  Bash script that installs Argocd through Helm
-    - path: /usr/local/bin/argocd-helminstall
-      mode: 0755
-      contents:
-        inline: |
-          #!/bin/bash
-          sudo kubectl create namespace argocd
-          sudo helm repo add argo https://argoproj.github.io/argo-helm
-          sudo helm install my-argo-cd argo/argo-cd --namespace argocd --version 5.27.5 --kubeconfig /etc/rancher/k3s/k3s.yaml
-          sudo kubectl apply -f /var/root.yaml
 
     # Set hostname
     - path: /etc/hostname
@@ -134,28 +122,3 @@ storage:
           method=auto
 
           [proxy]
-
-    # Configuration for ArgoCD
-    - path: /var/root.yaml
-      mode: 0600
-      contents:
-        inline: |
-          apiVersion: argoproj.io/v1alpha1
-          kind: Application
-          metadata:
-            name: root
-            namespace: argocd
-          spec:
-            project: default
-            source:
-              path: cluster/
-              repoURL: https://github.com/lobiplayer/myk8s_argocd.git
-              targetRevision: HEAD
-              directory:
-                  recurse: true
-            destination:
-              server: "https://kubernetes.default.svc"
-            syncPolicy:
-                automated:
-                  prune: false
-                  selfHeal: false
