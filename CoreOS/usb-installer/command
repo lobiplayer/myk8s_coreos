@@ -1,0 +1,1 @@
+sudo coreos-installer install /dev/sda --ignition-file ./usb-coreos.ign --image-file /tmp/fedora-coreos-38.20231002.3.1-metal.x86_64.raw.xz

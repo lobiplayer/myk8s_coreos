@@ -1,0 +1,44 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "passwordHash": "$y$j9T$ESI.95m/DiovKyPsYz/0r.$OEmQuEn4lQf7SZxEbccz/MaYZJkec4eKFWhXYivblj1",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2qCYXhOtEf7ZcI+gsasDOAA++IaoDnLfVUzt0h9ScZQqpaCJJ5/0yGM2WfX5NFUSPDvC5JIZ9JOjSMM94XW/ajLskxVYROwT/9g2R7H7crUHiRNVGXnse0/5fjt4plhkedvcsFDZCdCQi9mTgzgwPAN5HUJhd2eMrjZ3RByftcK6wORwoVgkJkO3THxzRgMWLiPsMDUrVzUwonZKH9Zk3Ei0JvQMsitF7kM8vGuvPH8yeNEN5JzHVrE3ZQZA1KT/whXHEbhTogtqn5MGEsmriqC5ejCvHQh6jKdkm02LwDff7E8hdtIBJtYowKtVHWapR783gvzGxFrYX66CFBBi7Om0Vn/RZWxzK4PJv4jU4ykBh1wTghtcUJMJMZ6k0eXKfVq0yR7Nk8uU2X7qdRKsXIio7IYwohS/qJmn5GmXyzXKt7zdnuh7Vo4pWo6+dxizlR8VXsQgrYFG5b9uNSPDhWT2laTGMvC8J6ZxL/LGnxPFpnDtauW1M5PDVYkC6uTs= rmohan@fedora"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/var/masternode1-install.sh",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/zyOS27DMAxE9zmFiq4l+lMEQbc9QBc9gEHbtE1EFg1ScpKevjAaZDfzMMC89zfoOUGPtpysjOJuvNFkzqODkXawEf/5IEpinpNljJHUPdNr5rznOXFmSb5odEvOm30CKN7CzHkpfTHSQVKmlMMgK0TpeYv4IIX10V1b64ZYLB8VOcGXKH3/wIoHSjJSDdfWvJHupIHndDyuOJOfOJKDHRUmGkXRP2XbS2iqpq2rqgltqP1KGWO4X87d+SMcXvff018AAAD//8pZrNIBAQAA"
+        },
+        "mode": 493
+      },
+      {
+        "path": "/var/workernode1-install.sh",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/zzOTWqEQBAF4L2n6JB1d/kThiHbHCCLHEBKLbWw7ZKqVmdy+iAM2b0HD973/gYdJ+jQ5uLkjUZzHh0MdIANWNg+iOtFScxzsowxkrpX+p8573lKnFmS3zW6OefNPgEUzzBxnvduN9JeUqaUQy8rROl4i/gkhfXZLo21fdwtXxU5wZcoff/AKbqQJhmogqUxb6QHaeApXY8rTuRHjuTgQIWRBlH0L2xzD3VZN1VZ1qEJlV8pYwyP+629fYTL9fgt/gIAAP//wQ8uk/wAAAA="
+        },
+        "mode": 493
+      },
+      {
+        "path": "/var/workernode2-install.sh",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/zyOQW6rQBBE9z7FfP31TGOILCvbHCCLHAA10ECLYRp1z4Cd00coVnZVpZLe+/8POk7Qoc0XK4O4gzcazXl0MNAONuDv3ouSmOdkGWMkda/0d3Pe85Q4syRfNLo5583eARSPMHGeS1eMtJeUKeXQywpROt4iPklhfbZLY20fi+WzIif4EKXPLzhEF9IkA9WwNOaNdCcNPKWTuOJEfuRIDnZUGGkQRf+Sbe6hrurmWlV1aMLVr5Qxhsf91t7ewun1+L78BAAA///ujto4AQEAAA=="
+        },
+        "mode": 493
+      }
+    ]
+  }
+}
