@@ -66,6 +66,9 @@ https://openwrt.org/docs/guide-user/additional-software/extroot_configuration
 
 ### Install and configure loadbalancer
 
+https://www.domstamand.com/adding-haproxy-as-load-balancer-to-the-kubernetes-cluster/
+
+
 
 
 
