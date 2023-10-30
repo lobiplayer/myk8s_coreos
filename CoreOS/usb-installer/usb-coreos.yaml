@@ -24,8 +24,8 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          wipefs -a /dev/sda
-          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/workernode1/k3s-server.ign --image-file /var/fedora-coreos-38.20231002.3.1-metal.x86_64.raw.xz
+          sudo wipefs -a /dev/sda
+          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/workernode1/k3s-client1.ign --image-file /var/fedora-coreos-38.20231002.3.1-metal.x86_64.raw.xz
 
     - path: /var/workernode2-install.sh
       mode: 0755
@@ -33,4 +33,4 @@ storage:
         inline: |
           #!/bin/bash
           sudo wipefs -a /dev/sda
-          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/workernode2/k3s-server.ign --image-file /var/fedora-coreos-38.20231002.3.1-metal.x86_64.raw.xz
+          sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/workernode2/k3s-client2.ign --image-file /var/fedora-coreos-38.20231002.3.1-metal.x86_64.raw.xz
