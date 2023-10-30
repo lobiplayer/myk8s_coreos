@@ -57,7 +57,7 @@ storage:
           id=eno1
           type=ethernet
           autoconnect-priority=-999
-          interface-name=enp1s0
+          interface-name=eno1
 
           [ethernet]
 

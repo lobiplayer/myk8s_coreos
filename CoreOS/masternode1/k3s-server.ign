@@ -35,7 +35,7 @@
         "path": "/etc/NetworkManager/system-connections/'eno1.nmconnection'",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0yOUWrDMBBE//csVWsVUzBFJxH6ENa4Fli7QlqX+PYhOCaB/VnmzWP8LMyYNQsHysmBxZIeFQ66ojGU4q7ypExtWVrWw5lpmiizoi1xhuFY4MDV9oHIX9VA5HP9HwPFlBp6t84On9cNX9/jx+unxP0t/qUCXSW5EnmP22n6OU3mD2yKJLiEJe6bXuxjKpGvTW5HuAcAAP//HX4xQtsAAAA="
+          "source": "data:;base64,H4sIAAAAAAAC/0yO0QrCMAxF3/MtVjcZwpB+SelDWe9cYU1Kl4n7e5E5FPIScs4hbhBmDJqEPaVowdKSbgUWOqEylMKq8qVMqUlq0s2avu8psaKOYYDhkLG75A7RE7lUnp2nEGPFsrS2bc7HNJdrd/rtFHn5O98pQyeJNgdew7yXbnvJPMAmS4SNGMM668F+HiVypcpr8+8AAAD//9NdHSDZAAAA"
         },
         "mode": 384
       }
