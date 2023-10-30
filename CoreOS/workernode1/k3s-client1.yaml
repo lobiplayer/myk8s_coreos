@@ -29,6 +29,7 @@ systemd:
       StandardError=kmsg+console
       [Install]
       WantedBy=multi-user.target
+
 storage:
   files:
     - path: /usr/local/bin/run-k3s-installer
