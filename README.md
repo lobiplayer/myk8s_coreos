@@ -93,7 +93,24 @@ Network > Firewall
 
 ![image](https://user-images.githubusercontent.com/76623233/216714671-8b5f5ef3-d176-4439-93bb-f1b555867475.png)
 
+## Masternode1
 
+Use a live-usb and make sure that coreos-installer is installed on it.
+Then find out what the disk name is where you want to instalal coreos. in my case this is sda.
+Then use the following commands:
+```
+sudo wipefs -a /dev/sda
+sudo coreos-installer install /dev/sda --ignition-url https://raw.githubusercontent.com/lobiplayer/my_k3s_cluster/main/CoreOS/masternode1/k3s-server.ign
+```
+
+when installed, reboot the machine. **It is important to remove the live-usb before the reboot**
+
+k3s will be installed. **Now reboot one more time**, k3s should be running now
+
+
+## Workernode1
+
+## Workernode2
 
 
 
