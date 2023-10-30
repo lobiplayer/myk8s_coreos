@@ -49,12 +49,12 @@ storage:
         inline: masternode1
     
     # Set network settings
-    - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
+    - path: /etc/NetworkManager/system-connections/'eno1.nmconnection'
       mode: 0600
       contents:
         inline: |
           [connection]
-          id=Wired connection 1
+          id=eno1
           type=ethernet
           autoconnect-priority=-999
           interface-name=enp1s0

@@ -32,10 +32,10 @@
         "mode": 420
       },
       {
-        "path": "/etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'",
+        "path": "/etc/NetworkManager/system-connections/'eno1.nmconnection'",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/0yOUQrCMAyG33OKHcDqKkMY0nP4UPpQlswV1rS0mbjbi8wxIS/Jl//jt0NipkFCYgcBzSMUwuY4NhpkzWRIJipMAn6R9MMql5BKkNWovu8hsFAZ/UCKfSRDnHVtAewedQA25FfnwCMWqlUb3Z73aS/X7nTsgFz/8B0iyZTQRM+LnzfTbTOpJ7GKCckgjX6ZZf/9VgWwuaT36j4BAAD//0KNQxfpAAAA"
+          "source": "data:;base64,H4sIAAAAAAAC/0yOUWrDMBBE//csVWsVUzBFJxH6ENa4Fli7QlqX+PYhOCaB/VnmzWP8LMyYNQsHysmBxZIeFQ66ojGU4q7ypExtWVrWw5lpmiizoi1xhuFY4MDV9oHIX9VA5HP9HwPFlBp6t84On9cNX9/jx+unxP0t/qUCXSW5EnmP22n6OU3mD2yKJLiEJe6bXuxjKpGvTW5HuAcAAP//HX4xQtsAAAA="
         },
         "mode": 384
       }
