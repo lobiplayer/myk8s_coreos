@@ -37,7 +37,7 @@ storage:
       contents:
         inline: |
           #!/bin/bash
-          curl -sfL https://get.k3s.io | K3S_URL=https://10.10.10.100:6443 K3S_TOKEN=K10a71fb876ad3f485cb9e6281db056b0b851e8a0cee4241c788e29ebda81bf6743::server:a2bb138d99b1530dcdd4bf06cc9e66be sh -
+          curl -sfL https://get.k3s.io | K3S_URL=https://10.10.10.100:6443 K3S_TOKEN=K1069f9a8311417bb7240f620797a0dc56e4f0a03597ea0650f532821de00b6b7d9::server:c296dba38d21fb958a57b743e5e22cdb sh -
 
     # Set hostname
     - path: /etc/hostname
@@ -45,7 +45,7 @@ storage:
       contents:
         inline: workernode1
     
-    - path: /etc/NetworkManager/system-connections/'Wired connection 1.nmconnection'
+    - path: /etc/NetworkManager/system-connections/'eno1.nmconnection'
       mode: 0600
       contents:
         inline: |
@@ -53,7 +53,7 @@ storage:
           id=Wired connection 1
           type=ethernet
           autoconnect-priority=-999
-          interface-name=enp1s0
+          interface-name=eno1
 
           [ethernet]
 
